@@ -274,7 +274,7 @@ CachetAPI.prototype.getIncidents = function(filter) {
     });
 };
 
-CachetAPI.prototype.getComponents = function(){
+CachetAPI.prototype.getComponents = function(filter){
     // Dirty hack
     var that = this;
 
@@ -283,7 +283,7 @@ CachetAPI.prototype.getComponents = function(){
             method: 'GET',
             json: true,
             headers: that.headers,
-            url: `${that.url}/components`,
+            url: `${that.url}/components` + parseFilter(filter),
             strictSSL: false,
             rejectUnauthorized: false
         };
@@ -296,7 +296,7 @@ CachetAPI.prototype.getComponents = function(){
     });
 };
 
-CachetAPI.prototype.getComponentGroups = function(){
+CachetAPI.prototype.getComponentGroups = function(filter){
     // Dirty hack
     var that = this;
 
@@ -305,7 +305,7 @@ CachetAPI.prototype.getComponentGroups = function(){
             method: 'GET',
             json: true,
             headers: that.headers,
-            url: `${that.url}/components/groups`,
+            url: `${that.url}/components/groups` + parseFilter(filter),
             strictSSL: false,
             rejectUnauthorized: false
         };
