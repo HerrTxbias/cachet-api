@@ -274,6 +274,26 @@ CachetAPI.prototype.getIncidents = function(filter) {
     });
 };
 
+CachetAPI.prototype.getComponents = function(){
+    // Dirty hack
+    var that = this;
+
+    return new Promise(function(resolve, reject) {
+        var req = {
+            method: 'GET',
+            json: true,
+            headers: that.headers,
+            url: `${that.url}/components`
+        };
+
+        request(req, function(err, res, body) {
+            body = (body && body.data) ? body.data : body;
+
+            handleResponse(err, res, body, reject, resolve);
+        });
+    });
+}
+
 function handleResponse(err, res, body, reject, resolve) {
     // Handle errors by rejecting the promise
     if (err) {
