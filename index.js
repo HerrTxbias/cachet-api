@@ -260,7 +260,9 @@ CachetAPI.prototype.getIncidents = function(filter) {
             method: 'GET',
             json: true,
             headers: that.headers,
-            url: that.url + '/incidents' + parseFilter(filter)
+            url: that.url + '/incidents' + parseFilter(filter),
+            strictSSL: false,
+            rejectUnauthorized: false
         };
 
         // Execute request
