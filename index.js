@@ -283,7 +283,9 @@ CachetAPI.prototype.getComponents = function(){
             method: 'GET',
             json: true,
             headers: that.headers,
-            url: `${that.url}/components`
+            url: `${that.url}/components`,
+            strictSSL: false,
+            rejectUnauthorized: false
         };
 
         request(req, function(err, res, body) {
@@ -292,7 +294,7 @@ CachetAPI.prototype.getComponents = function(){
             handleResponse(err, res, body, reject, resolve);
         });
     });
-}
+};
 
 function handleResponse(err, res, body, reject, resolve) {
     // Handle errors by rejecting the promise
