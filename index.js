@@ -296,6 +296,50 @@ CachetAPI.prototype.getComponents = function(){
     });
 };
 
+CachetAPI.prototype.getComponentGroups = function(){
+    // Dirty hack
+    var that = this;
+
+    return new Promise(function(resolve, reject) {
+        var req = {
+            method: 'GET',
+            json: true,
+            headers: that.headers,
+            url: `${that.url}/components/groups`,
+            strictSSL: false,
+            rejectUnauthorized: false
+        };
+
+        request(req, function(err, res, body) {
+            body = (body && body.data) ? body.data : body;
+
+            handleResponse(err, res, body, reject, resolve);
+        });
+    });
+};
+
+CachetAPI.prototype.getVersion = function(){
+    // Dirty hack
+    var that = this;
+
+    return new Promise(function(resolve, reject) {
+        var req = {
+            method: 'GET',
+            json: true,
+            headers: that.headers,
+            url: `${that.url}/version`,
+            strictSSL: false,
+            rejectUnauthorized: false
+        };
+
+        request(req, function(err, res, body) {
+            body = (body && body.data) ? body.data : body;
+
+            handleResponse(err, res, body, reject, resolve);
+        });
+    });
+};
+
 function handleResponse(err, res, body, reject, resolve) {
     // Handle errors by rejecting the promise
     if (err) {
