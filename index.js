@@ -77,7 +77,9 @@ CachetAPI.prototype.publishMetricPoint = function(metricPoint) {
             method: 'POST',
             json: metricPoint,
             headers: that.headers,
-            url: that.url + '/metrics/' + metricPoint.id + '/points'
+            url: that.url + '/metrics/' + metricPoint.id + '/points',
+            strictSSL: false,
+            rejectUnauthorized: false
         };
 
         // Execute request
@@ -132,7 +134,9 @@ CachetAPI.prototype.reportIncident = function(incident) {
             method: 'POST',
             json: incident,
             headers: that.headers,
-            url: that.url + '/incidents'
+            url: that.url + '/incidents',
+            strictSSL: false,
+            rejectUnauthorized: false
         };
 
         // Execute request
@@ -159,7 +163,9 @@ CachetAPI.prototype.getComponentById = function(id) {
             method: 'GET',
             json: true,
             headers: that.headers,
-            url: that.url + '/components/' + id + '?t=' + new Date().getTime()
+            url: that.url + '/components/' + id + '?t=' + new Date().getTime(),
+            strictSSL: false,
+            rejectUnauthorized: false
         };
 
         // Execute request
@@ -200,7 +206,9 @@ CachetAPI.prototype.updateIncident = function(incident) {
             json: true,
             headers: that.headers,
             body: incident,
-            url: that.url + '/incidents/' + incident.id
+            url: that.url + '/incidents/' + incident.id,
+            strictSSL: false,
+            rejectUnauthorized: false
         };
 
         // Execute request
@@ -238,7 +246,9 @@ CachetAPI.prototype.updateComponent = function(component) {
             json: true,
             headers: that.headers,
             body: component,
-            url: that.url + '/components/' + component.id
+            url: that.url + '/components/' + component.id,
+            strictSSL: false,
+            rejectUnauthorized: false
         };
 
         // Execute request
