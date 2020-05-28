@@ -374,7 +374,7 @@ CachetAPI.prototype.getMetricPoints = function(metric, filter){
     });
 };
 
-CachetAPI.prototype.getSchedules = function(metric, filter){
+CachetAPI.prototype.getSchedules = function(filter){
     // Dirty hack
     var that = this;
 
