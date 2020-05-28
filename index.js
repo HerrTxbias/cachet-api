@@ -330,6 +330,50 @@ CachetAPI.prototype.getComponentGroups = function(filter){
     });
 };
 
+CachetAPI.prototype.getMetrics = function(filter){
+    // Dirty hack
+    var that = this;
+
+    return new Promise(function(resolve, reject) {
+        var req = {
+            method: 'GET',
+            json: true,
+            headers: that.headers,
+            url: `${that.url}/metrics` + parseFilter(filter),
+            strictSSL: false,
+            rejectUnauthorized: false
+        };
+
+        request(req, function(err, res, body) {
+            body = (body && body.data) ? body.data : body;
+
+            handleResponse(err, res, body, reject, resolve);
+        });
+    });
+};
+
+CachetAPI.prototype.getMetricPoints = function(metric, filter){
+    // Dirty hack
+    var that = this;
+
+    return new Promise(function(resolve, reject) {
+        var req = {
+            method: 'GET',
+            json: true,
+            headers: that.headers,
+            url: `${that.url}/metrics/${metric}/points` + parseFilter(filter),
+            strictSSL: false,
+            rejectUnauthorized: false
+        };
+
+        request(req, function(err, res, body) {
+            body = (body && body.data) ? body.data : body;
+
+            handleResponse(err, res, body, reject, resolve);
+        });
+    });
+};
+
 CachetAPI.prototype.getVersion = function(){
     // Dirty hack
     var that = this;
