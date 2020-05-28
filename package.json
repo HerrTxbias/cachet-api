@@ -1,6 +1,6 @@
 {
   "name": "herrtxbias-cachet-api",
-  "version": "1.0.12",
+  "version": "1.0.13",
   "description": "An API client for Cachet, the open source status page system.",
   "main": "index.js",
   "scripts": {
